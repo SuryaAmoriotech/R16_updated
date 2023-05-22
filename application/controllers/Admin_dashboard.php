@@ -1071,7 +1071,164 @@ foreach($val as $perm_data){
         //$this->template->full_admin_html_view($content);
     }
 
+        public function forgot()
+        {
+                 $CI = & get_instance();
+        $this->load->model('Users');
+        
+                     $this->form_validation->set_rules('email', 'Email', 'required|valid_email'); 
+   
+                $email = $this->input->post('email');  
+                 $clean = $this->security->xss_clean($email);
 
+            $userInfo = $CI->Users->getUserInfoByEmail($clean);
+         
+                $email = $this->input->post('email');  
+                 $clean = $this->security->xss_clean($email);
+
+                
+                
+                if(empty($userInfo)){
+                    $this->session->set_flashdata('flash_message', 'We cant find your email address');
+                  //  redirect(site_url().'Admin_dashboard/login');
+                }   
+                
+              
+  
+  $token = $CI->Users->insertToken($userInfo[0]['unique_id']);        
+      
+                             
+                $qstring = $this->base64url_encode($token);                  
+                $url = site_url() . 'Admin_dashboard/reset_password/token/' . $qstring;
+                $link = '<a href="' . $url . '">' . $url . '</a>'; 
+                
+                $message = '';                     
+                $message .= '<strong>Greeting from Stockeai</strong><br>
+There was a request to change your password!
+If you did not make this request then please ignore this email.
+Otherwise, please click this link to change your password:</strong><br>';
+                $message .= '<strong>' . $link.'</strong> ';             
+
+            //    echo $message; //send this through mail
+            //      $CI = & get_instance();
+     $CI->load->library('phpmailer_lib');
+           $mail = $CI->phpmailer_lib->load();
+  
+
+        $to = $email;
+      
+        $subject = "Reset Password - Stockeai";
+       $mailsetting = $this->db->select('*')->from('email_config')->get()->result_array();
+        $created = $this->session->userdata('user_id');
+
+            // print_r($created); die();
+
+        // echo '<pre>';
+        // print_r($_POST); die;
+        // echo '</pre>';
+
+        try {
+            //Server settings
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+            $mail->isSMTP();                                           
+            $mail->Host       = $mailsetting[0]['smtp_host'];                     
+            $mail->SMTPAuth   = true;                                  
+            $mail->Username   = $mailsetting[0]['smtp_user'];              
+            $mail->Password   = $mailsetting[0]['smtp_pass'];                            
+            $mail->SMTPSecure = $mailsetting[0]['protocol'];            
+            $mail->Port       =$mailsetting[0]['smtp_port'];                                   
+            $mail->setFrom($to, 'Mailer');
+            $mail->addAddress($to, 'Mailer');     //Add a recipient
+          //  $mail->addCC($cc);
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = "$message "."<br>";
+          //  $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            // echo 'Message has been sent';
+            echo "<script>alert('Email Send Successfully')</script>";
+         
+redirect(base_url()."Admin_dashboard/login");
+  $this->session->set_flashdata('flash_message', 'Your password has been updated. You may now login');
+                // if($result){
+                //    echo "<script>alert('Inserted Success')</script>";
+                // }else{
+                //     echo "<script>alert('Inserted Failed !!!')</script>";
+                // }
+            // echo "<script>window.location.href='select_quote.html'</script>";
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+       
+    
+                
+            
+            
+    
+    }
+           public function reset_password()
+        {
+                $CI = & get_instance();
+        $this->load->model('Users');
+            $token = $this->base64url_decode($this->uri->segment(4));                  
+            $cleanToken = $this->security->xss_clean($token);
+            
+            $user_info = $CI->Users->isTokenValid($cleanToken); //either false or array();               
+          
+            if(!$user_info){
+                $this->session->set_flashdata('flash_message', 'Token is invalid or expired');
+                redirect(site_url().'Admin_dashboard/login');
+            }            
+            $data = array(
+                'firstName'=> $user_info->username, 
+                'email'=>$user_info->email_id, 
+//                'user_id'=>$user_info->id, 
+                'token'=>$this->base64url_encode($token)
+            );
+           
+            $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
+            $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');              
+            
+            if ($this->form_validation->run() == FALSE) {   
+               
+                $this->load->view('reset_password', $data);
+    
+            }else{
+                                
+                $this->load->library('password');                 
+                $post = $this->input->post(NULL, TRUE);                
+                $cleanPost = $this->security->xss_clean($post);                
+              //  $hashed = $this->password->create_hash($cleanPost['password']);      
+                
+                  $hashed=md5('gef'.$cleanPost['password']);     
+                $cleanPost['password'] = $hashed;
+                $cleanPost['unique_id'] = $user_info->unique_id;
+                unset($cleanPost['passconf']);                
+                if(!$CI->Users->updatePassword($cleanPost)){
+                    $this->session->set_flashdata('flash_message', 'There was a problem updating your password');
+                }else{
+                    ?>
+<script type="text/javascript">
+window.history.go(-2);
+</script>
+<?php
+                    sleep(5);
+                    $this->session->set_flashdata('flash_message', 'Your password has been updated. You may now login');
+                      header("Location:".base_url()."/Admin_dashboard/login/");
+                }
+               // redirect(site_url().'Admin_dashboard/login');                
+            }
+        }
+            public function base64url_encode($data) { 
+      return rtrim(strtr(base64_encode($data), '+/', '-_'), '='); 
+    } 
+
+    public function base64url_decode($data) { 
+      return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT)); 
+    } 
     #==============Valid user check=======#
 
     public function do_login() {

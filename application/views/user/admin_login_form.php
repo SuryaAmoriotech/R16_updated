@@ -77,7 +77,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="recoverylabel"><?php echo display('password_recovery')?></h5>
+        <h2 class="modal-title" id="recoverylabel"><?php echo display('password_recovery')?></h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -86,21 +86,25 @@
         </div>
       </div>
       <div class="modal-body">
-           <?php echo form_open('', array('id' => 'passrecoveryform',)) ?>
-                      <div class="form-group row">
-                            <label for="email" class="col-sm-3 col-form-label"><?php echo display('email')?> <i class="text-danger">*</i></label>
-                            <div class="col-sm-6">
-                                <input class="form-control" name ="rec_email" id="email" type="text" placeholder="<?php echo display('email') ?>"  required="">
-                            </div>
-                        </div>
-                        
+          
+    <p>Please enter your registered email  address and we'll send you a link  to reset your password.</p>
+    <?php $fattr = array('class' => 'form-signin');
+         echo form_open(base_url().'Admin_dashboard/forgot/', $fattr); ?>
+    <div class="form-group">
+      <?php echo form_input(array(
+          'name'=>'email', 
+          'id'=> 'email', 
+          'placeholder'=>'Email', 
+          'class'=>'form-control', 
+          'value'=> set_value('email'))); ?>
+      <?php echo form_error('email') ?>
+    </div>
+    <?php echo form_submit(array('value'=>'Submit', 'class'=>'btn btn-lg btn-primary btn-block')); ?>
+    <?php echo form_close(); ?>   
                         
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" id="submit" class="btn btn-success" value="Send">
-      </div>
-       <?php echo form_close() ?>
+    
+     
     </div>
   </div>
 </div>

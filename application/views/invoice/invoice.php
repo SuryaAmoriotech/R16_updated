@@ -299,7 +299,7 @@ $today = date('Y-m-d');
                   <th class="23 value" data-col="23" data-resizable-column-id="23"    style="width: 198.011px;"       >Remarks/Conditions</th>
                   <th class="24 value" data-col="24" data-resizable-column-id="24"    style="width: 198.011px;"       >Account Details</th>
       <div class="myButtonClass Action">
-         <th class="25 text-center" data-col="25" data-column-id="25" data-formatter="commands" data-sortable="false"   style="width: 280.011px; height: 39.0114px;"  >Action</th>
+         <th class="25 text-center" data-col="25" data-column-id="25" data-formatter="commands" data-sortable="false"   style="  width: 380.011px;  height: 39.0114px;"  >Action</th>
         </div>
       </tr>
     </thead>
@@ -371,17 +371,18 @@ $today = date('Y-m-d');
 
 
 
-
-
-
-
-
-
-
-
-
-
    <a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;"  data-toggle="modal" data-target="#emailmodal" onclick="mail(<?php echo  $arr['invoice_id'];  ?>,'invoice','invoice_id')"><i class="fa fa-envelope" aria-hidden="true" ></i></a>
+  
+  
+  
+  
+   <a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Cinvoice/sale_invoice_delete/<?php echo  $arr['invoice_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+
+
+
+  
+  
   </td>
   </div>
 </tr>

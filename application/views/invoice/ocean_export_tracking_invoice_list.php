@@ -269,7 +269,7 @@ $today = date('Y-m-d');
 
      
       <div class="myButtonClass"> 
-         <th class="text-center 26" data-column-id="26" data-formatter="commands" data-sortable="false" style="width: 500.011px; height: 45.0114px;"     >Action</th>
+         <th class="text-center 26" data-column-id="26" data-formatter="commands" data-sortable="false" style="width: 700.011px; height: 45.0114px;"     >Action</th>
         </div>
       </tr>
     </thead>
@@ -350,6 +350,7 @@ $today = date('Y-m-d');
 
 
 
+ <a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Cinvoice/ocean_export_tracking_delete_form/<?php echo  $arr['ocean_export_tracking_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
 
 

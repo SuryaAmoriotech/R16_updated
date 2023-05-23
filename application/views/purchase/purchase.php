@@ -260,7 +260,7 @@ $today = date('Y-m-d');
           <th data-col="21" class="21 value" data-control-column="21" style="width:100px;" name="OverallNet">Due Date</th>
                           <th data-col="22" class="22 value"data-control-column="22" style="width: 250.011px;"name="AmountPaid" >Provider Total</th>
         <div class="myButtonClass">
-           <th class="text-center 23 value" data-col="23" style="width:300px;" data-formatter="commands" data-sortable="false" name="Action">Action</th>
+           <th class="text-center 23 value" data-col="23" style="width:380px;" data-formatter="commands" data-sortable="false" name="Action">Action</th>
           </div>
         </tr>
       </thead>
@@ -342,6 +342,15 @@ $today = date('Y-m-d');
 
 
 
+
+
+
+      <a class="btnclr btn  btn-sm"   href="<?php if(!empty($arr['purchase_id'])) 
+      { 
+        echo base_url()?>Cpurchase/purchase_details_data/<?php echo  $arr['purchase_id']; }else{
+           echo base_url()?>Cpurchase/servicepro_delete_data/<?php echo  $arr['serviceprovider_id'];
+
+      } ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>  
 
 
 

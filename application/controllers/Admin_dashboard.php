@@ -29,7 +29,7 @@ class Admin_dashboard extends CI_Controller {
 
         if($this->input->post('page_status')){
         $pagedata=$this->input->post('page_status');
-  //   echo $pagedata;
+//    echo $pagedata;
   // echo "sadasd";
         foreach ($page_setting as  $single) {
          
@@ -63,9 +63,20 @@ class Admin_dashboard extends CI_Controller {
        
          }
         $content = $CI->parser->parse('include/dashboard_setting', $data, true);
-        //print_r($data);// die();
+//  print_r($data);// die();
        $this->template->full_admin_html_view($content);
     }
+
+
+
+
+
+
+
+
+
+
+
     public function index() {
         
         $date = $this->input->post('daterangepicker-field',TRUE);
@@ -78,10 +89,7 @@ $current=date('Y-m-d');
         
         $date = str_replace(' ', '', $date);
         $split=explode("to",$date);
-       // echo $date;
-      //  print_r($split);
-      //  die();
-        //echo $this->session->userdata('user_id');
+      
         $CI = & get_instance();
         $CI->load->library('lreport');
         $CI->load->library('occational');
@@ -102,13 +110,12 @@ $current=date('Y-m-d');
         $total_product       = $CI->Products->count_product();
         $total_suppliers     = $CI->Suppliers->count_supplier();
        
-        $todays_sales_report_detail = $CI->Invoices->todays_sales_report();
-        $monthly_sales_report= $CI->Reports->monthly_sales_report();
+         $todays_sales_report_detail = $CI->Invoices->todays_sales_report();
+         $monthly_sales_report= $CI->Reports->monthly_sales_report();
          $overall_sales= $CI->Reports->overall_sales();
-        $overall_sale_no        = $CI->Reports->overall_sale_no();
-        $no_of_sale     = $CI->Reports->total_sales_report($split[0],$split[1]);
-      // $profit     = $CI->Reports->profit($split[0],$split[1]);
-        $sales_paid     = $CI->Reports->sales_paid();
+         $overall_sale_no        = $CI->Reports->overall_sale_no();
+         $no_of_sale     = $CI->Reports->total_sales_report($split[0],$split[1]);
+         $sales_paid     = $CI->Reports->sales_paid();
          $sales_due   = $CI->Reports->sales_due();
 
 
@@ -213,7 +220,7 @@ if (!empty($best_sales_product))
        'total_service'  =>$total_service
 
      );
-  //   print_r($data1);
+//    print_r($data1);
    
         $data = array(
             'total_sales_product'  =>$total_sales_product,
@@ -238,8 +245,8 @@ if (!empty($best_sales_product))
     'month'               => $tlvmonth,
     'total_sales'         => $total_sales,
  
-'todays_sales_report_detail' =>$todays_sales_report_detail,
-'service_provider_list'  => $service_provider_list,
+    'todays_sales_report_detail' =>$todays_sales_report_detail,
+    'service_provider_list'  => $service_provider_list,
     'sale_setting'  => $Sale,
     'expense_setting'  => $Expense,
     'sale_invoice_setting'  => $Sale_invoice,
@@ -252,7 +259,6 @@ if (!empty($best_sales_product))
     'todays_sales_reportsetting'=> $todays_sales_report_set,
     'total_purchase'      => $total_purchase,
     'todays_total_sales_report' => $todays_total_sales_amount,
-    //'chart_label'         => $chart_label,
     'chart_data'          => $chart_data,
     'purchase_amount'     => number_format($sales_report[0]['total_supplier_rate'], 2, '.', ','),
     'sales_amount'        => number_format($salesamount[0]['total_amount'], 2, '.', ','),
@@ -266,9 +272,18 @@ if (!empty($best_sales_product))
         );
    
         $content = $CI->parser->parse('include/admin_home', $data, true);
-        //print_r($data); die();
+        // print_r($data); die();
         $this->template->full_admin_html_view($content);
     }
+
+
+
+
+
+
+
+
+
     public function chart() {
         $start=$_GET['start'];
         $end=$_GET['end'];

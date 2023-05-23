@@ -167,12 +167,13 @@ form {
             $this->session->unset_userdata('error_message');
         }
         ?>
-          <div class="row">
+          <div class="">
+          <div style="<?php if($sale_setting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body" style="height: 50px;font-size: xx-large;">
+                                <div class="card-body" style="height: 90px;font-size: xx-large;">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                               <i class="fa fa-money"  style="float:right;border-radius:10px;padding: 5px 10px 5px 10px;background-color:#4775d1;color:white;" aria-hidden="true"></i>
@@ -195,11 +196,14 @@ form {
                                 </div>
                             </div>
                         </div>
+                        </div>
+
+                        <div style="<?php if($expense_setting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body" style="height: 50px;font-size: xx-large;">
+                                <div class="card-body" style="height: 90px;font-size: xx-large;">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <i class='fa fa-credit-card-alt' style="float:right;border-radius:10px;padding: 5px 10px 5px 10px;background-color:#53c68c;color:white;" aria-hidden="true"></i>
@@ -220,11 +224,14 @@ form {
                                 </div>
                             </div>
                         </div>
+                        </div>
+
+                        <div style="<?php if($sale_invoice_setting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body" style="font-size: xx-large;">
+                                <div class="card-body" style="height: 90px;font-size: xx-large;">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <i class='fa fa-line-chart'  style="float:right;border-radius:10px;padding: 5px 10px 5px 10px;background-color:#47d1d1;color:white;"></i>
@@ -248,11 +255,17 @@ echo html_escape($currency).$string;
                                 </div>
                             </div>
                         </div>
+                        </div>
+
+
+
+
+                        <div style="<?php if($expense_invoice_setting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
 
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body" style="height: 50px;font-size: xx-large;">
+                                <div class="card-body" style="height: 90px;font-size: xx-large;">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <i class="fa fa-shopping-bag" style="float:right;border-radius:10px;padding: 5px 10px 5px 10px;background-color:#ffd633;color:white;"></i>
@@ -270,8 +283,16 @@ echo html_escape($currency).$string;
                             </div>
                         </div>
                     </div>
+                    </div>
 
-                      <div class="row">
+
+
+
+
+                      <div class="">
+
+                      <div style="<?php if($product_sold=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
+
 
                         <!-- Area Chart -->
                         <div class="col-xl-8 col-lg-7">
@@ -384,6 +405,10 @@ echo html_escape($currency).$string;
                                 </div>
                                 </div>
                             </div>
+                            </div>
+
+
+                            <div style="<?php if($product_purchased=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
 
                                 <div class="col-xl-4 col-md-6 mb-4" style="height:100px;">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -404,11 +429,13 @@ echo html_escape($currency).$string;
                                 </div>
                             </div>
                         </div>
+                        </div>
 
                                 
                                  
 							 
-							  
+                        <div style="<?php if($best_sales_product=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
+	  
 						
 							
 						   <div class="col-xl-4 col-md-6 mb-4" style="height:100px;">
@@ -430,6 +457,11 @@ echo html_escape($currency).$string;
                                 </div>
                             </div>
                         </div>
+                        </div>
+
+                        <div style="<?php if($todays_overviewsetting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
+
+
 								   <div class="col-xl-4 col-md-6 mb-4" style="height:100px;">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body" style="height: 50px;font-size: xx-large;">
@@ -451,11 +483,13 @@ echo html_escape($currency).$string;
                             </div>
                         </div>
                         </div>
+                        </div>
 
 
                       
                                 
 
+                        <div style="<?php if($yearly_reportsetting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
 
 
                         <!-- Pie Chart -->
@@ -489,6 +523,7 @@ echo html_escape($currency).$string;
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
 
 
@@ -540,9 +575,12 @@ $searchdate =(!empty($s)?$s:$dat2);
     $split=explode("to",$dat);
 ?>
 
-                                <div class="row">
+                                <div class="">
                 <!-- Total Report -->
                 
+
+    <div style="<?php if($todays_sales_reportsetting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>" >
+
                    <!-- This today transaction progress -->
                 <div class="col-sm-12 col-md-12" style="<?php //if($todays_sales_reportsetting=='disable'){ echo "display: none;"; }else{ echo "display: block;"; } ?>">
                     <div class="panel panel-bd">
@@ -653,7 +691,8 @@ $searchdate =(!empty($s)?$s:$dat2);
                 </div>
                 
       
-               
+                </div>
+ 
              
             </div>
    
@@ -697,8 +736,8 @@ $searchdate =(!empty($s)?$s:$dat2);
 
   <input type="hidden" id="today_n_sale" value="<?php
      echo html_escape($this->Reports->today_no_of_sale())?>" name="">
-     <input type="text" id="today_sal" value="<?php
-     echo html_escape($this->Reports->todays_total_sales_amount())?>" name="">
+     <!-- <input type="text" id="today_sal" value="<?php
+     echo html_escape($this->Reports->todays_total_sales_amount())?>" name=""> -->
     
      <input type="hidden" id="today_sale_due" value="<?php
      echo html_escape($this->Reports->today_sale_due())?>" name="">

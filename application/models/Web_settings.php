@@ -397,9 +397,12 @@ else
 
         $this->db->update('users', $data);
 
+        // echo $this ->db ->last_query();die();
         return true;
 
     }
+
+
 
     public function get_user_setting($user_id)
     {
@@ -410,6 +413,11 @@ else
         return $query->row_array();
     }
 
+
+
+
+
+    
     public function app_settingsdata(){
 
         return $result = $this->db->select('*')

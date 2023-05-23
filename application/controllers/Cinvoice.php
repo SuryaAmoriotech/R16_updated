@@ -21,6 +21,110 @@ class Cinvoice extends CI_Controller {
 
     }
  
+
+
+    #==============sale delete==============#
+
+    public function sale_invoice_delete($invoice_id)
+    {
+
+
+      
+         $payment_id = $this->db->select('payment_id')->from('invoice')->where('invoice_id',$invoice_id)->get()->row()->payment_id;
+         $dataw['commercial_invoice_number'] = $this->input->post('commercial_invoice_number',TRUE);
+
+    
+         $result1 = $this->db->delete('payment',array('payment_id' => $payment_id));
+         $result2 = $this->db->delete('invoice', array('invoice_id' => $invoice_id)); 
+         $result3 = $this->db->delete('invoice_details', array('invoice_id' => $invoice_id)); 
+
+
+        if ($result3 == true) {
+           $this->session->set_userdata(array('message'=>display('successfully_delete')));
+        }
+        // alert('Successfully Delete');
+        redirect('Cinvoice/manage_invoice');
+    }
+
+
+    #==============profarma delete==============#
+
+    public function profarma_invoice_delete_form($purchase_id)
+    {
+
+
+        $payment_id = $this->db->select('payment_id')->from('profarma_invoice')->where('purchase_id',$purchase_id)->get()->row()->payment_id;
+        $data['purchase_id'] = $this->input->post('purchase_id',TRUE);
+
+
+        $result1 = $this->db->delete('payment', array('payment_id' => $payment_id)); 
+        $result2 = $this->db->delete('profarma_invoice', array('purchase_id' => $purchase_id)); 
+        $result3 = $this->db->delete('profarma_invoice_details', array('purchase_id' => $purchase_id)); 
+
+
+
+
+        if ($result3 == true) {
+           $this->session->set_userdata(array('message'=>display('successfully_delete')));
+        }
+   
+        
+        redirect('Cinvoice/manage_profarma_invoice');
+    }
+
+
+    #==============ocean_export delete==============#
+
+    public function ocean_export_tracking_delete_form($ocean_export_tracking_id)
+    {
+
+        $data['ocean_export_tracking_id'] = $this->input->post('ocean_export_tracking_id',TRUE);
+
+
+        $result = $this->db->delete('ocean_export_tracking', array('ocean_export_tracking_id' => $ocean_export_tracking_id)); 
+        // print_r( $result);
+
+        if ($result == true) {
+           $this->session->set_userdata(array('message'=>display('successfully_delete')));
+        }
+   
+        
+        redirect('Cinvoice/manage_ocean_export_tracking');
+    }
+
+
+
+    #==============trucking_delete==============#
+
+    public function trucking_delete_form($trucking_id)
+    {
+
+        $data['trucking_id'] = $this->input->post('trucking_id',TRUE);
+
+
+        $result1 = $this->db->delete('sale_trucking', array('trucking_id' => $trucking_id)); 
+        $result2 = $this->db->delete('sale_trucking_details', array('trucking_id' => $trucking_id)); 
+
+        if ($result2 == true) {
+           $this->session->set_userdata(array('message'=>display('successfully_delete')));
+        }
+   
+        
+        redirect('Cinvoice/manage_trucking');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function best_sales_products() {
 
     $firststart= date('Y-m-d', strtotime('first day of january this year'));
@@ -493,7 +597,8 @@ echo json_encode($data);
       $query=$this->db->query($sql);
       $company_content=$query->result_array();
       
-    //   echo $this->db->last_query();die();
+    //   print_r( $company_content);
+    //  echo $this->db->last_query();die();
 
       $currency_details = $CI->Web_settings->retrieve_setting_editdata();
       $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
@@ -4493,11 +4598,14 @@ $sql='select * from profarma_invoice where purchase_id='.$invoiceid;
 $content = $this->load->view('pdf_attach_mail/profarma', $data, true);
   }
 
+
+
 public function proforma_with_attachment_cus($invoiceid)
   {
       $CA = & get_instance();
       $CI = & get_instance();
       $CA->load->model('invoice_design');
+      $CA->load->model('invoice_content');
       $CA->load->model('Web_settings');
       $dataw = $CA->invoice_design->proforma_data();
       $currency_details = $CI->Web_settings->retrieve_setting_editdata();
@@ -4539,13 +4647,20 @@ $sql='select * from profarma_invoice where purchase_id='.$invoiceid;
     $data['template'] = $dataw[0]['template'];
     $data['curn_info_default'] = $curn_info_default[0]['currency_name'];
     $data['currency'] = $currency_details;
+
+    $sql='select * from invoice_content ';
+    $query=$this->db->query($sql);
+    $company_content=$query->result_array();
+
+//    print_r( $company_content);
     // $dataw = $CA->invoice_design->proforma_data();
  //   $dataw['header'] = $header;
 // $data=array(
 //     'header' => $dataw[0]['header']
 // );
  //.print_r($data['curn_info_default']);
-    //   print_r($data); die();
+//   print_r($data);
+   die();
     $content = $this->load->view('pdf_attach_mail/profarma', $data, true);
   }
   /////////////////////packing//////////////////////////////////

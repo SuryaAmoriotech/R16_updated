@@ -1102,7 +1102,7 @@ $unique_supplier_name = array_unique($supplier_name);
                   <th class="17 value"data-col="17" data-control-column="17" >Serial No</th>
                   <th class="18 value" data-col="18" data-control-column="18" style="color:white;">Country</th>
                   
-                  <th class="19 text-center Action"  data-col="19" data-resizable-column-id="19" data-column-id="action" data-formatter="commands" data-sortable="false" >Action</th>
+                  <th class="19 text-center Action"  data-col="19" data-resizable-column-id="19" data-column-id="action" data-formatter="commands" style="width: 100Px;" data-sortable="false" >Action</th>
       </tr>
     </thead>
                      
@@ -1218,12 +1218,13 @@ $total =$s+$e;
       
        ?>
 
-<td data-col="19" class="19 text-center Action"><a class="btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Cproduct/product_update_form/<?php  echo  $product['product_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td data-col="19" class="19 text-center Action"><a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Cproduct/product_update_form/<?php  echo  $product['product_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     
                     <?php break;}} 
                     if($_SESSION['u_type'] ==2){ ?>
 
-<td data-col="19" class="19 text-center Action"><a class="btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Cproduct/product_update_form/<?php  echo  $product['product_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td data-col="19" class="19 text-center Action"><a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Cproduct/product_update_form/<?php  echo  $product['product_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Cproduct/product_delete_form/<?php  echo  $product['product_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 
                         <?php  } ?>
 

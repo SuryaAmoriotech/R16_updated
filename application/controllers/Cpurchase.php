@@ -21,6 +21,120 @@ class Cpurchase extends CI_Controller {
     $content = $CI->lpurchase->servicepro_details_data($serviceprovider_id);
     $this->template->full_admin_html_view($content);
 }
+
+
+
+
+
+  #==============expenses_delete==============#
+
+  public function purchase_delete_form($purchase_id)
+  {
+      $data['purchase_id'] = $this->input->post('purchase_id',TRUE);
+      
+
+    //   print_r( $purchase_id);
+
+      $result = $this->db->delete('product_purchase', array('purchase_id' => $purchase_id)); 
+
+      $result1 = $this->db->delete('product_purchase_details', array('purchase_id' => $purchase_id)); 
+
+    //   die();
+      if ($result == true) {
+         $this->session->set_userdata(array('message'=>display('successfully_delete')));
+      }
+      redirect('Cpurchase/manage_purchase');
+  }
+
+
+
+
+
+
+  #==============purchase_order_delete==============#
+
+  public function purchase_order_delete_form($purchase_order_id)
+  {
+
+
+      $payment_id = $this->db->select('payment_id')->from('purchase_order')->where('purchase_order_id',$purchase_order_id)->get()->row()->payment_id;
+
+      $purchase_id = $this->db->select('purchase_id')->from('purchase_order_details')->where('purchase_id' , $purchase_order_id)->get()->row()->purchase_id;
+    
+      // echo $this->db->last_query(); die();
+
+      $result1 = $this->db->delete('payment',array('payment_id' => $payment_id));
+      $result2 = $this->db->delete('purchase_order', array('purchase_order_id' => $purchase_order_id)); 
+      $result3 = $this->db->delete('purchase_order_details', array('purchase_id' => $purchase_id)); 
+
+
+
+
+
+
+
+      if ($result3 == true) {
+         $this->session->set_userdata(array('message'=>display('successfully_delete')));
+      }
+      redirect('Cpurchase/manage_purchase_order');
+  }
+
+
+  #==============ocean_import_delete==============#
+
+  public function ocean_import_tracking_delete_form($ocean_import_tracking_id)
+  {
+      $data['ocean_import_tracking_id'] = $this->input->post('ocean_import_tracking_id',TRUE);
+
+
+      $result = $this->db->delete('ocean_import_tracking', array('ocean_import_tracking_id' => $ocean_import_tracking_id)); 
+     // print_r( $result);
+
+      if ($result == true) {
+         $this->session->set_userdata(array('message'=>display('successfully_delete')));
+      }
+      redirect('Ccpurchase/manage_ocean_import_tracking');
+  }
+
+
+
+
+
+
+  #==============servicepro_delete_data==============#
+
+  public function servicepro_delete_data($serviceprovider_id)
+  {
+      $data['serviceprovider_id'] = $this->input->post('serviceprovider_id',TRUE);
+
+
+      $result = $this->db->delete('service', array('serviceprovider_id' => $serviceprovider_id)); 
+      $result = $this->db->delete('service_provider_detail', array('serviceprovider_id' => $serviceprovider_id)); 
+
+      if ($result == true) {
+         $this->session->set_userdata(array('message'=>display('successfully_delete')));
+      }
+     redirect('Cpurchase/manage_purchase');
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public function add_payment_terms(){
         $CI = & get_instance();
         $CI->auth->check_admin_auth();
@@ -108,6 +222,9 @@ public function serviceprovider_update_form($serviceprovider_id) {
         $content1 = $this->lpurchase->purchase_list();
         $expense = $CI->Purchases->newexpense($date);
         $servpro = $CI->Purchases->servicepro($date) ;
+
+        // print_r($servpro);die();
+
 $out = array();
 foreach ($expense as $key => $value){
     $out[] = (object)array_merge((array)$servpro[$key], (array)$value);
@@ -771,6 +888,12 @@ public function manage_trucking() {
         $content = $CI->lpurchase->ocean_import_tracking_details_data_print($purchase_id);
         $this->template->full_admin_html_view($content);
     }
+
+
+
+
+
+
 public function insert_service_provider() {
 // die("dies");
         $CI = & get_instance();
@@ -779,6 +902,14 @@ public function insert_service_provider() {
         $data=$CI->Purchases->service_provider_entry();
         echo json_encode($data);
     }
+
+
+
+
+
+
+
+
 
 
 

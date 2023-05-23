@@ -311,7 +311,7 @@ $today = date('Y-m-d');
 <th class="20 value" data-col="20" data-control-column="20" style="width: 190.011px; height: 44.0114px;">Grand Total</th>
 <th class="21 value" data-col="21" data-control-column="21" style="width: 190.011px; height: 44.0114px;">Grand Total(Preferred Currency)</th>
 <th class="22 value" data-col="22" data-control-column="22" style="width: 190.011px; height: 44.0114px;">Remarks / Details</th>
-        <th class="text-center 23" data-column-id="23" data-formatter="commands" data-sortable="false" style="width: 350.011px; height: 39.0114px;" >Action</th>
+        <th class="text-center 23" data-column-id="23" data-formatter="commands" data-sortable="false" style="    width: 450.011px; height: 49.0114px;" >Action</th>
       </tr>
     </thead>
     <tbody class="sortableTable__body">
@@ -345,32 +345,32 @@ $today = date('Y-m-d');
   <div class="form-group">
   <td data-col="23" class="23">
   <a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Cinvoice/performa_pdf/<?php echo  $arr['purchase_id'];  ?>"><i class="fa fa-download" aria-hidden="true"></i></a>
+
+  
   <a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;"  data-toggle="modal" data-target="#emailmodal" onclick="profarmamail(<?php echo  $arr['purchase_id'];  ?>,'profarma_invoice','purchase_id')"><i class="fa fa-envelope" aria-hidden="true" ></i></a>
 
   
-
-  
-
-
-
-
-
-
-                        <?php    foreach(  $this->session->userdata('perm_data') as $test){
+  <?php    foreach(  $this->session->userdata('perm_data') as $test){
     $split=explode('-',$test);
     if(trim($split[0])=='sales' && $_SESSION['u_type'] ==3 && trim($split[1])=='0010'){
       
       
        ?>
 
-<a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Cinvoice/profarma_invoice_update_form/<?php echo  $arr['purchase_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     
                     <?php break;}} 
                     if($_SESSION['u_type'] ==2){ ?>
 
 <a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Cinvoice/profarma_invoice_update_form/<?php echo  $arr['purchase_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Cinvoice/profarma_invoice_delete_form/<?php echo  $arr['purchase_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
                         <?php  } ?>
+
+
+
+
+
+
 
 
 

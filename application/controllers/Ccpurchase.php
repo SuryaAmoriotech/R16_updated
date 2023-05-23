@@ -22,6 +22,55 @@ class Ccpurchase extends CI_Controller {
     }
 
 
+
+
+
+
+
+ #==============trucking_delete==============#
+
+ public function trucking_delete_form($trucking_id)
+ {
+     $data['trucking_id'] = $this->input->post('trucking_id',TRUE);
+
+
+     $expense_trucking_id = $this->db->select('expense_trucking_id')->from('expense_trucking_details')->where('expense_trucking_id' , $trucking_id)->get()->row()->expense_trucking_id;
+
+// echo $this ->db ->last_query(); die();
+
+     $result = $this->db->delete('expense_trucking', array('trucking_id' => $trucking_id));
+     $result = $this->db->delete('expense_trucking_details', array('expense_trucking_id' => $expense_trucking_id));
+
+ 
+
+     if ($result == true) {
+        $this->session->set_userdata(array('message'=>display('successfully_delete')));
+     }
+     redirect('Ccpurchase/manage_trucking');
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function manage_packing_list(){
         $CI = & get_instance();
         $CI->auth->check_admin_auth();

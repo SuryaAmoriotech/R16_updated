@@ -1211,7 +1211,7 @@ public function ocean_export_tracking_details_data_print($purchase_id) {
                         'account' =>$update_invoice_set[0]->account,
                         'remarks' =>  $update_invoice_set[0]->remarks
         );
-print_r($update_invoice_set);
+// print_r($update_invoice_set);
 // echo $update_invoice_set[0];
         $invoiceForm = $CI->parser->parse('invoice/add_invoice_form', $data, true);
        // $invoiceForm = $CI->parser->parse('invoice/profarma_invoice', $data, true);

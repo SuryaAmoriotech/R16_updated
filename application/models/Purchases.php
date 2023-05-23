@@ -2225,12 +2225,12 @@ if($records_per_page != -1)
 $query .= " LIMIT " . $start_from . ", " . $records_per_page;
 }
   $query = $this->db->get();
- // echo $this->db->last_query();
-// $result = $this->db->query($query);
-// $result = $query->result_array();
-// foreach($result as $row)
+  // echo $this->db->last_query();
+$result = $this->db->query($query);
+$result = $query->result_array();
+foreach($result as $row)
 {
-// $data[] = $row;
+$data[] = $row;
 }
 $this->db->select('*');
 $this->db->from('service');
@@ -2243,6 +2243,13 @@ $output = array(
 );
 return $output;
 }
+
+
+
+
+
+
+
 public function service_provider($serviceprovider_id) {
              $this->db->select('a.*,b.*');
         $this->db->from('service a');

@@ -28,6 +28,45 @@ class Csupplier extends CI_Controller {
         $this->template->full_admin_html_view($content);
     }
 
+
+
+
+
+
+    #==============supplier_delete==============#
+
+    public function supplier_delete_form($supplier_id)
+    {
+
+        $data['supplier_id'] = $this->input->post('supplier_id',TRUE);
+
+
+        $result1 = $this->db->delete('supplier_information', array('supplier_id' => $supplier_id)); 
+        $result2 = $this->db->delete('supplier_product', array('supplier_id' => $supplier_id)); 
+
+        if ($result == true) {
+           $this->session->set_userdata(array('message'=>display('successfully_delete')));
+        }
+   
+        
+        redirect('Csupplier/manage_supplier');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //Insert supplier
         //Insert supplier
        

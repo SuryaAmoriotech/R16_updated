@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>my-assets/css/css.css" />
 
 <!-- Admin Home Start -->
 <div class="content-wrapper">
@@ -73,7 +77,7 @@
                                             $sl = 0;
                      foreach ($page_setting as $single) {
                      
-                                //print_r($single);
+                                // print_r($single);
                                                 $sl++;
                                                 ?>
                                                 <tr>
@@ -108,7 +112,7 @@
                                            <td><?php echo display('sl') ?></td>
                                             <td><?php echo 'Wedge Title' ?></td>
                                             <td><?php echo 'Status' ?></td>
-                                            <td><input type="submit" class="btn btn-primary" name="save" value="Save Action"></td>
+                                            <td><input type="submit" class="btnclr btn m-b-5 m-r-2" name="save" value="Save Action"></td>
                                            
                                         </tr>
                                     </tfoot>

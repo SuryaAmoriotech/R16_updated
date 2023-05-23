@@ -24,6 +24,46 @@ class Cproduct extends CI_Controller {
         $content = $CI->lproduct->product_add_form();
         $this->template->full_admin_html_view($content);
     }
+
+
+
+
+
+    #==============product delete==============#
+
+    public function product_delete_form($product_id)
+    {
+        $dataw['product_id'] = $this->input->post('product_id',TRUE);
+
+        
+        $result = $this->db->delete('product_information', array('product_id' => $product_id)); 
+
+        $result2 = $this->db->delete('product_details', array('product_id' => $product_id)); 
+
+
+
+
+        if ($result == true) {
+           $this->session->set_userdata(array('message'=>display('successfully_delete')));
+        }
+        redirect('Cproduct/manage_product');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public function delete_img()
     {
             $s = $this->input->post();

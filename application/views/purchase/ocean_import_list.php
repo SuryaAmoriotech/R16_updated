@@ -311,8 +311,10 @@ $today = date('Y-m-d');
                     
                     <?php break;}} 
                     if($_SESSION['u_type'] ==2){ ?>
+  <a class="btnclr btn btn-success btn-sm" style="background-color: #3ca5de;" href="<?php echo base_url()?>Cpurchase/ocean_import_tracking_details_data/<?php echo  $arr['ocean_import_tracking_id'];  ?>"><i class="fa fa-download" aria-hidden="true"></i></a>
 
 <a class="btnclr btn btn-success btn-sm" style="background-color: #3ca5de;" href="<?php echo base_url()?>Cpurchase/ocean_import_tracking_update_form/<?php echo  $arr['ocean_import_tracking_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="btnclr btn btn-success btn-sm" style="background-color: #3ca5de;" href="<?php echo base_url()?>Cpurchase/ocean_import_tracking_delete_form/<?php echo  $arr['ocean_import_tracking_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
                         <?php  } ?>
 
@@ -327,7 +329,6 @@ $today = date('Y-m-d');
 
 
 
-  <a class="btnclr btn btn-success btn-sm" style="background-color: #3ca5de;" href="<?php echo base_url()?>Cpurchase/ocean_import_tracking_details_data/<?php echo  $arr['ocean_import_tracking_id'];  ?>"><i class="fa fa-download" aria-hidden="true"></i></a>
 </td></tr>
      <?php   
 $count++;

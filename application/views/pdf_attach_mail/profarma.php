@@ -640,8 +640,8 @@ $content .='<table  >
   $content .= '</body></html>'; 
  $content;
 
-  // echo $content;
-  // die();
+  echo $content;
+  die();
 
 
 $pdf->writeHTML($content);

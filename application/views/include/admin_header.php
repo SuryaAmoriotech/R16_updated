@@ -508,7 +508,6 @@ if($_SESSION['u_type']==2)
                        
 
 
-                             <!--    <li class="treeview  "><a href="<?php //echo base_url(); ?>/Cpurchase/manage_packing_list">Packing List</a></li>-->
             
 
                                             <li class="treeview  "><a href="<?php echo base_url(); ?>/Ccpurchase/manage_ocean_import_tracking">Ocean Import Tracking</a></li>
@@ -520,16 +519,7 @@ if($_SESSION['u_type']==2)
         
 
 
-           <!--              <li  class="treeview  ">
-                <a href="<?php echo base_url(); ?>/Cpurchase/manage_purchase">
-                    <i class="ti-shopping-cart"></i><span>Expenses</span> -->
-                    <!-- <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span> -->
-              <!--   </a>
-                
-            </li>
-         -->
+       
             <!-- Purchase menu end -->  
              <!-- Quotation Menu Start -->
                      <li class="treeview  ">
@@ -537,10 +527,7 @@ if($_SESSION['u_type']==2)
                     <i class="fa fa-book"></i><span>Quotation</span>
                    
                 </a>
-                <!-- <ul class="treeview-menu" >
-                                <li><a href="<?php echo base_url(); ?>/Cquotation">Add Quotation</a></li>
-                                                    <li><a href="<?php echo base_url(); ?>/Cquotation/manage_quotation">Manage Quotation</a></li>
-                                </ul> -->
+              
             </li>
                     <!-- quotation Menu end -->
             

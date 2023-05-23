@@ -308,15 +308,17 @@ https://cdn.jsdelivr.net/npm/jquery-base64-js@1.0.1/jquery.base64.min.js
       
       
        ?>
-<td data-col="21" class="21"><a class="btn  btn-sm"  style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Csupplier/supplier_update_form/<?php echo  $arr['supplier_id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td data-col="21" class="21"><a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Csupplier/supplier_update_form/<?php echo  $arr['supplier_id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
                     
                     <?php break;}} 
                     if($_SESSION['u_type'] ==2){ ?>
 
-<td data-col="21" class="21"><a class="btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Csupplier/supplier_update_form/<?php echo  $arr['supplier_id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td data-col="21" class="21"><a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Csupplier/supplier_update_form/<?php echo  $arr['supplier_id']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Csupplier/supplier_delete_form/<?php echo  $arr['supplier_id']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 
                         <?php  } ?>
+
 
 
 

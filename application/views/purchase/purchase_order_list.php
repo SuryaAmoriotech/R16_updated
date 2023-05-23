@@ -303,6 +303,7 @@ $today = date('Y-m-d');
                     if($_SESSION['u_type'] ==2){ ?>
 
 <a class="btnclr btn  btn-sm"  href="<?php echo base_url()?>Cpurchase/purchase_order_update_form/<?php echo  $arr['purchase_order_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="btnclr btn  btn-sm"  href="<?php echo base_url()?>Cpurchase/purchase_order_delete_form/<?php echo  $arr['purchase_order_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
                         <?php  } ?>
 

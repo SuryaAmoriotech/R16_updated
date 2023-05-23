@@ -1,3 +1,14 @@
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>my-assets/css/css.css" />
+
+
+
+
+
 <!-- Company List Start -->
 <div class="content-wrapper">
 	<section class="content-header">
@@ -48,7 +59,7 @@
 		        <div class="panel panel-bd lobidrag">
 		            <div class="panel-heading">
 		                <div class="panel-title">
-		                   <a href="<?php echo base_url('User/manage_user'); ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> Add Company </a>
+		                   <a href="<?php echo base_url('User/manage_user'); ?>" class="btnclr btn m-b-5 m-r-2"><i class="ti-plus"> </i> Add Company </a>
 		                </div>
 		            </div>
 		            <div class="panel-body">
@@ -78,9 +89,9 @@
 										<td>
 											<center>
 											<?php echo form_open() ?>
-											<?php if($this->permission1->method('manage_company','update')->access()){?>
-												<a href="<?php echo base_url().'Company_setup/company_update_form/{company_id}'; ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="<?php echo display('update') ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-											<?php }?>
+											<?php //if($this->permission1->method('manage_company','update')->access()){?>
+												<a href="<?php echo base_url().'Company_setup/company_update_form/{company_id}'; ?>" class="btnclr btn m-b-5 m-r-2" data-toggle="tooltip" data-placement="left" title="" data-original-title="<?php echo display('update') ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+											<?php //}?>
 											<?php echo form_close()?>
 											</center>
 										</td>

@@ -330,6 +330,7 @@ https://cdn.jsdelivr.net/npm/jquery-base64-js@1.0.1/jquery.base64.min.js
 
 <?php    foreach(  $this->session->userdata('perm_data') as $test){
     $split=explode('-',$test);
+
     if(trim($split[0])=='customer' && $_SESSION['u_type'] ==3 && trim($split[1])=='0010'){
       
       
@@ -338,26 +339,31 @@ https://cdn.jsdelivr.net/npm/jquery-base64-js@1.0.1/jquery.base64.min.js
 <td data-col="21" class="21"><a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Ccustomer/customer_update_form/<?php echo  $arr['customer_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     
                     <?php break;}} 
+
+
+
                     if($_SESSION['u_type'] ==2){ ?>
 
-<td data-col="21" class="21"><a class="btnclr btn btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Ccustomer/customer_update_form/<?php echo  $arr['customer_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td data-col="21" class="21"><a class="btnclr btn btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Ccustomer/customer_update_form/<?php echo  $arr['customer_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Ccustomer/customer_delete/<?php echo  $arr['customer_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 
-                        <?php  } ?>
+                        <?php  } ?> 
 
-
-
-   <td data-col="22" class="22"><a class="btnclr btn  btn-sm" style="background-color: #3CA5DE; color: #fff;" href="<?php echo base_url()?>Ccustomer/customer_delete/<?php echo  $arr['customer_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-
+       
 
 
+    
 
+                        
 
-
-
-
-
-  </td>
+                     
   </div>
+
+
+
+
+
+
 </tr>
 
      <?php   

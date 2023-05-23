@@ -246,7 +246,7 @@ $today = date('Y-m-d');
 
         
       <div class="myButtonClass Action" > 
-         <th class="text-center 19"  data-column-id="19"   data-formatter="commands" data-sortable="false" style="width: 174.011px; height: 39.0114px;"  >Action</th>
+         <th class="text-center 19"  data-column-id="19"   data-formatter="commands" data-sortable="false" style="width: 274.011px; height: 39.0114px;"  >Action</th>
         </div>
       </tr>
     </thead>
@@ -320,6 +320,7 @@ $today = date('Y-m-d');
                     if($_SESSION['u_type'] ==2){ ?>
 
 <a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Cinvoice/trucking_update_form/<?php echo  $arr['trucking_id'];  ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a class="btnclr btn  btn-sm" style="background-color: #3ca5de; color: #fff;" href="<?php echo base_url()?>Cinvoice/trucking_delete_form/<?php echo  $arr['trucking_id'];  ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
                         <?php  } ?>
 

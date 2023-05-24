@@ -4650,8 +4650,8 @@ $sql='select * from profarma_invoice where purchase_id='.$invoiceid;
 
     $sql='select * from invoice_content ';
     $query=$this->db->query($sql);
-    $company_content=$query->result_array();
-
+    // $company_content
+    $data['company_content']=$query->result_array();
 //    print_r( $company_content);
     // $dataw = $CA->invoice_design->proforma_data();
  //   $dataw['header'] = $header;
@@ -4660,7 +4660,7 @@ $sql='select * from profarma_invoice where purchase_id='.$invoiceid;
 // );
  //.print_r($data['curn_info_default']);
 //   print_r($data);
-   die();
+//    die();
     $content = $this->load->view('pdf_attach_mail/profarma', $data, true);
   }
   /////////////////////packing//////////////////////////////////
@@ -4773,6 +4773,8 @@ $content = $this->load->view('pdf_attach_mail/ocean', $data, true);
     $CA = & get_instance();
     $CI = & get_instance();
     $CA->load->model('invoice_design');
+    $CA->load->model('invoice_content');
+
     $dataw = $CA->invoice_design->retrieve_data($this->session->userdata('user_id'));
    $sql='select c.* from user_login  u join company_information c on c.company_id=u.cid where u.user_id='.$_SESSION['user_id'];
     $query=$this->db->query($sql);
@@ -4795,6 +4797,16 @@ $content = $this->load->view('pdf_attach_mail/ocean', $data, true);
     $sql='SELECT c.* from ocean_export_tracking i JOIN supplier_information c on c.supplier_id=i.supplier_id WHERE i.ocean_export_tracking_id ='.$invoiceid ;
     $query=$this->db->query($sql);
     $data['customer_info']=$query->result_array();
+
+
+
+    $sql='select * from invoice_content ';
+    $query=$this->db->query($sql);
+    // $company_content
+    $data['company_content']=$query->result_array();
+
+
+
     // echo '<pre>';
     // print_r($data['customer_info'][0]['email_address']); die();
     // echo '</pre>';
@@ -4874,14 +4886,15 @@ $content = $this->load->view('pdf_attach_mail/trucking', $data, true);
     $data['template'] = $dataw[0]['template'];
     $data['curn_info_default'] = $curn_info_default[0]['currency_name'];
     $data['currency'] = $currency_details;
-//     $sql=' SELECT * FROM `customer_information` where customer_id='.$data['customer_info'][0]['delivery_to'];
-//     $query=$this->db->query($sql);
-//    $data['customer_delivery']=$query->result_array();
-//     $customer_ok = $CI->db->select('*')->from('customer_information')->where('customer_id', $data['ocean'][0]['consignee'])->get()->result_array();
-//     $data['customername']= $customer_ok;
-//  print_r($data['customername']);
-// print_r(  $dataw);
-// exit;
+
+
+    $sql='select * from invoice_content ';
+    $query=$this->db->query($sql);
+    // $company_content
+    $data['company_content']=$query->result_array();
+
+
+
 $content = $this->load->view('pdf_attach_mail/trucking', $data, true);
   }
 

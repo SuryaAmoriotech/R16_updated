@@ -139,7 +139,7 @@ if(1==1)
          <img src="'.$this->session->userdata('image_email').'" width="100px" />
         </td>
         <td style="border: none; text-align: center; color: white">'. $head[0]['header'].'</td>
-        <td style="border: none; text-align: left; color: white"><b>Company Name</b>:'.$company_content[0]['business_name'].'<br><b>Email</b>:'.$company_content[0]['email'].'<br><b>Number </b>:'.$company_content[0]['phone'].'<br><b>Address</b>:'.$company_content[0]['address'].'</td>
+        <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
       
       </tr>
     </table>
@@ -293,7 +293,7 @@ elseif($template==1)
   <tr class="header_view">
    
     <td style="border: none; text-align: center; color: white">'. $head[0]['header'].'</td>
-    <td style="border: none; text-align: left; color: white"><b>Company Name</b>:'.$company_content[0]['business_name'].'<br><b>Email</b>:'.$company_content[0]['email'].'<br><b>Number </b>:'.$company_content[0]['phone'].'<br><b>Address</b>:'.$company_content[0]['address'].'</td>
+    <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
     <td style="border: none">
     <img src="'.$this->session->userdata('image_email').'" width="100px" />
    </td>
@@ -455,7 +455,7 @@ elseif($template==3)
     <td style="border: none">
      <img src="'.$this->session->userdata('image_email').'" width="100px" />
     </td>
-    <td style="border: none; text-align: left; color: white"><b>Company Name</b>:'.$company_content[0]['business_name'].'<br><b>Email</b>:'.$company_content[0]['email'].'<br><b>Number </b>:'.$company_content[0]['phone'].'<br><b>Address</b>:'.$company_content[0]['address'].'</td>
+    <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
   
   </tr>
 </table>
@@ -623,8 +623,8 @@ $content .='<table>
 
 $content .= '</body></html>';    
 $content;
-echo $content;
-die();
+// echo $content;
+// die();
 
 
 $pdf->writeHTML($content);

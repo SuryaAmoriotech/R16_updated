@@ -37,60 +37,63 @@ if(1==1)
   $content = ''; 
 
   $content .= '<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      body {
-        border: 1px solid #dee2e6;
-        margin-top:50px;
-      }
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      td,
-      th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 10px;
-      }
-      .table_view {
-        border: 1px solid #111;
-        color:#fff;
-      }
-
-      .header_view {
-        padding: 10px 40px;
-      }
-      table .heading{
-            border: 1px solid #111;
+  <html>
+    <head>
+      <style>
+        body {
+          border: 1px solid #dee2e6;
+          margin-top:50px;
         }
-        .text_color{
-            color: #fff;
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
         }
-        .heading_view{
-           margin-left: 10px;
+  
+        td,
+        th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 10px;
         }
-        .data_view{
-          text-align: center;
+        .table_view {
+          border: 1px solid #111;
+          background-color: #5961b3;
+          color:#fff;
         }
-    </style>
-  </head>
-  <body>';
+  
+        .header_view {
+          background-color: #5961b3;
+          padding: 10px 40px;
+        }
+        table .heading{
+              border: 1px solid #111;
+              background-color:#5961b3;
+          }
+          .text_color{
+              color: #fff;
+          }
+          .heading_view{
+             margin-left: 10px;
+          }
+          .data_view{
+            text-align: center;
+          }
+      </style>
+    </head>
+    <body>';
 
   if($template == 2) {
   
     $content .= '<table>
-      <tr class="header_view" style="background-color:'.$color.'" >
+      <tr class="header_view" >
         <td style="border: none">
             <img src="'.$this->session->userdata('image_email').'" width="100px" />
 
         </td>
         <td style="border: none; text-align: center; color: white">'. $head[0]['header'].'</td>
            
-      <td style="border: none; text-align: right; color: white">Company Name: '.$company_info[0]['company_name'].'<br>Email: '.$company_info[0]['email'].'<br>Mobile: '.$company_info[0]['mobile'].'<br>Address: '.$company_info[0]['address'].'</td>
+      <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
 
 
         </tr>
@@ -152,7 +155,7 @@ if(1==1)
     </table>
     <br><br>
     <table>
-      <tr class="table_view" style="background-color:'.$color.'">
+      <tr class="table_view" >
         <th style="color: #fff; text-align: center">S.No</th>
         <th style="color: #fff; text-align: center">Date</th>
         <th style="color: #fff; text-align: center">Quantity</th>
@@ -234,14 +237,14 @@ if(1==1)
   elseif($template == 3) {
   
     $content .= '<table>
-      <tr class="header_view" style="background-color:'.$color.'" >
+      <tr class="header_view"  >
         <td style="border: none">
            <img src="'.$this->session->userdata('image_email').'" width="100px" />
 
         </td>
         <td style="border: none; text-align: center; color: white">'. $head[0]['header'].'</td>
            
-       <td style="border: none; text-align: right; color: white">Company Name: '.$company_info[0]['company_name'].'<br>Email: '.$company_info[0]['email'].'<br>Mobile: '.$company_info[0]['mobile'].'<br>Address: '.$company_info[0]['address'].'</td>
+        <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
 
         </tr>
     </table>
@@ -302,7 +305,7 @@ if(1==1)
     </table>
     <br><br>
     <table>
-      <tr class="table_view" style="background-color:'.$color.'" >
+      <tr class="table_view"  >
         <th style="color: #fff; text-align: center">S.No</th>
         <th style="color: #fff; text-align: center">Date</th>
         <th style="color: #fff; text-align: center">Quantity</th>
@@ -385,13 +388,13 @@ if(1==1)
   elseif($template == 1){
 
   $content .= '<table>
-      <tr class="header_view" style="background-color:'.$color.'" >
+      <tr class="header_view" >
         <td style="border: none">
           <img src="'.$this->session->userdata('image_email').'" width="100px" />
         </td>
         <td style="border: none; text-align: center; color: white">'. $head[0]['header'].'</td>
- <td style="border: none; text-align: right; color: white">Company Name: '.$company_info[0]['company_name'].'<br>Email: '.$company_info[0]['email'].'<br>Mobile: '.$company_info[0]['mobile'].'<br>Address: '.$company_info[0]['address'].'</td>
-      </tr>
+        <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
+        </tr>
     </table>
     <br><br>
 
@@ -450,7 +453,7 @@ if(1==1)
       </table>
       <br><br>
       <table>
-        <tr class="table_view" style="background-color:'.$color.'">
+        <tr class="table_view" >
           <th style="color: #fff; text-align: center">S.No</th>
           <th style="color: #fff; text-align: center">Date</th>
           <th style="color: #fff; text-align: center">Quantity</th>

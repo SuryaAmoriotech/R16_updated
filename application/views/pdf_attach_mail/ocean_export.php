@@ -50,26 +50,29 @@ if(1==1)
       }
       .table_view {
         border: 1px solid #111;
+        background-color: #5961b3;
       }
 
       .header_view {
+        background-color: #5961b3;
         padding: 10px 40px;
       }
     </style>
   </head>
   <body>';
 
+
   if($template == 2){
  
     $content .= '<table>
-      <tr class="header_view"   style="background-color:'.$color.'">
+      <tr class="header_view"   >
         <td style="border: none">
           <img src="'.$this->session->userdata('image_email').'" width="100px" />
         </td>
         <td style="border: none; text-align: center; color: white">'. $head[0]['header'].'</td>
 
 
-        <td style="border: none; text-align: right; color: white">Company Name: '.$company_info[0]['company_name'].'<br>Email: '.$company_info[0]['email'].'<br>Mobile: '.$company_info[0]['mobile'].'<br>Address: '.$company_info[0]['address'].'</td>
+        <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
 
       </tr>
     </table>
@@ -175,13 +178,13 @@ if(1==1)
 
   }elseif($template == 1){
 $content .= '<table>
-      <tr class="header_view"  style="background-color:'.$color.'">
+      <tr class="header_view"  >
         <td style="border: none">
            <img src="'.$this->session->userdata('image_email').'" width="100px" />
         </td>
         <td style="border: none; text-align: center; color: white">'. $head[0]['header'].'</td>
- <td style="border: none; text-align: right; color: white">Company Name: '.$company_info[0]['company_name'].'<br>Email: '.$company_info[0]['email'].'<br>Mobile: '.$company_info[0]['mobile'].'<br>Address: '.$company_info[0]['address'].'</td>
-      </tr>
+        <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
+        </tr>
     </table>
     <br> <br>
 
@@ -286,14 +289,14 @@ $content .= '<table>
   }elseif($template == 3){
 
     $content .= '<table>
-      <tr class="header_view"  style="background-color:'.$color.'">
+      <tr class="header_view"  >
         <td style="border: none">
            <img src="'.$this->session->userdata('image_email').'" width="100px" />
         </td>
 
         <td style="border: none; text-align: center; color: white">'. $head[0]['header'].'</td>
- <td style="border: none; text-align: right; color: white">Company Name: '.$company_info[0]['company_name'].'<br>Email: '.$company_info[0]['email'].'<br>Mobile: '.$company_info[0]['mobile'].'<br>Address: '.$company_info[0]['address'].'</td>
-      </tr>
+        <td style="border: none; text-align: right; color: white">Company Name: '.$company_content[0]['business_name'].'<br>Email: '.$company_content[0]['email'].'<br>Mobile: '.$company_content[0]['phone'].'<br>Address: '.$company_content[0]['address'].'</td>
+        </tr>
     </table>
     <br> <br>
 

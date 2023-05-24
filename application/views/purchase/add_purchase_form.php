@@ -187,7 +187,15 @@
                     <div class="panel-body">
                        
       <div class="with_po">
-
+<!-- <section class="content-header">
+<div class="header-icon">
+    <i class="pe-7s-note2"></i>
+</div>
+<div class="header-title">
+    <h1><?php echo "Create Service Provider" ?></h1>
+    <small><?php echo "Generate Service Provider" ?></small>
+</div>
+</section> -->
            <div class="panel-body">
                 <form id="serviceprovider"  method="post">
                     <div class="row">
@@ -4134,6 +4142,56 @@ var v=$(this).val();
  $(this).closest('table').find('.b_total').val(sum.toFixed(3)).trigger('change');
   });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 $(document).ready(function(){
    $('.removebundle').hide();
 $('#amt').hide();
